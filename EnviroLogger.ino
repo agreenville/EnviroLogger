@@ -1,3 +1,8 @@
+/*
+* Enviro data looger
+* 
+* Aaron Greenville
+ */
 
 // load libraries
 #include <OneWire.h> // for DS18B20 temp sensor
@@ -6,8 +11,9 @@
 #include <SFE_BMP180.h> // Bosch BMP180 barometric pressure sensor.
 #include <Wire.h> // Date and time functions using a DS1307 RTC connected via I2C and Wire lib
 #include "RTClib.h"
-//#include <SPI.h> // for data logger shield
+#include <SPI.h> // for data logger shield
 #include <SD.h> //sd card library
+
 
 // Real time clock function
 RTC_PCF8523 rtc;
@@ -20,8 +26,8 @@ const uint8_t DHTPIN = 5;     //  digital pin DHT connected to
 int DS18B20_Pin = 9; 
 
 // defining soil temp and humidity pins and variables
-const uint8_t dataPin  =  12; // soil data
-const uint8_t clockPin =  11; // soil clock
+const uint8_t dataPin  =  7; // soil data
+const uint8_t clockPin =  6; // soil clock
 float SoilTemp; 
 float SoilHumidity;
 float SoilDew;
@@ -52,7 +58,7 @@ void setup() {
 
 // initialize the SD card
   Serial.print(F("Initializing SD card..."));
-    
+   
 // see if the card is present and can be initialized:
   if (!SD.begin(chipSelect)) {
     Serial.println(F("Card failed, or not present"));
